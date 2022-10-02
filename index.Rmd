@@ -1,26 +1,29 @@
 ---
-output: html_document
+title: "Kate Hoff Shutta"
+output:
+    rmdformats::robobook:
+    toc_depth: 4
 ---
 ```{R echo=F}
 library(knitr)
+library(rmdformats)
 ```
 
-## Kate Hoff Shutta
 
 ```{R echo=F, out.width="200px"}
 knitr::include_graphics("images/headshot.jpeg")
 ```
 
-### About me
+## About me
 
 I am a postdoctoral research fellow at Harvard School of Public Health and Brigham and Women's Hospital, exploring network models for multiomic data.
 
-### Resources 
+## Resources 
 
 + [SpiderLearner Quickstart Guide](https://katehoffshutta.github.io/web/SpiderLearner/SpiderLearnerQuickStart.html)
 
-+ [DINGO Tutorial](https://katehoffshutta.github.io/tutorials/20220311_dingoTutorial.html)
++ [DIfferential Network analysis in GenOmics (DINGO) Tutorial](https://katehoffshutta.github.io/tutorials/20220311_dingoTutorial.html) 
 
-### Contact
+## Contact
 
 kshutta @ hsph . harvard . edu
