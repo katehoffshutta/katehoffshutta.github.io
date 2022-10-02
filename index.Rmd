@@ -1,7 +1,26 @@
 ---
 output: html_document
 ---
+```{R echo=F}
+library(knitr)
+```
 
-## Resources 
+## Kate Hoff Shutta
 
-[SpiderLearner Quickstart Guide](https://katehoffshutta.github.io/web/SpiderLearner/SpiderLearnerQuickStart.html)
+```{R echo=F, out.width="200px"}
+knitr::include_graphics("images/headshot.jpeg")
+```
+
+### About me
+
+I am a postdoctoral research fellow at Harvard School of Public Health and Brigham and Women's Hospital, exploring network models for multiomic data.
+
+### Resources 
+
++ [SpiderLearner Quickstart Guide](https://katehoffshutta.github.io/web/SpiderLearner/SpiderLearnerQuickStart.html)
+
++ [DINGO Tutorial](https://katehoffshutta.github.io/tutorials/20220311_dingoTutorial.html)
+
+### Contact
+
+kshutta @ hsph . harvard . edu
