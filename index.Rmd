@@ -1,0 +1,7 @@
+---
+output: html_document
+---
+
+## Resources 
+
+[SpiderLearner Quickstart Guide](https://katehoffshutta.github.io/web/SpiderLearner/SpiderLearnerQuickStart.html)

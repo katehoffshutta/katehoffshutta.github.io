@@ -1,0 +1,183 @@
+---
+title: "SpiderLearner Quick Start"
+author: "Kate Hoff Shutta"
+date: "12/22/2021"
+output: 
+  rmdformats::robobook:
+    code_folding: show
+    toc_depth: 3
+bibliography: references.bib  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,cache=F)
+```
+
+# Installing and Loading the `ensembleGGM` Package
+
+Begin by installing and loading the `devtools` package, then using the `install_github` function to install `ensembleGGM` from GitHub as follows:
+
+```{R message=F,results='hide'}
+library(devtools)
+install_github("katehoffshutta/ensembleGGM")
+library(ensembleGGM)
+```
+
+# Loading Example Data
+
+Next, load the example data. Note that you will need to install the `affy` and `curatedOvarianData` packages from Bioconductor.
+
+```{R message=F}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+
+# Uncomment this line to install the affy and curatedOvarianData package 
+# Takes time, so re-comment after
+# BiocManager::install("affy")
+# BiocManager::install("curatedOvarianData")
+
+library(affy)
+library(curatedOvarianData)
+```
+
+# Extracting and Standardizing Example Data
+
+For illustration, we extract an example dataset (GSE32062.GPL6480_eset) from the `curatedOvarianCancer` package, and select a subset of genes related to ovarian carcinoma based on the Human Phenotype Ontology [@kohler2021human]:
+
+```{R}
+standardize = function(x){return((x-mean(x))/sd(x))}
+
+data(GSE32062.GPL6480_eset)
+lateStage = exprs(GSE32062.GPL6480_eset)
+
+# Extract a subset of genes related to ovarian carcinoma 
+# based on the Human Phenotype Ontology
+# See https://hpo.jax.org/app/browse/term/HP:0025318
+
+lateStageSmall = lateStage[c(1680,1681,3027,4564,8930,12243,12245,13694,13695,13701,13979,16082,16875,17980),]
+lateStageSmall = t(lateStageSmall)
+names(lateStageSmall) = colnames(lateStageSmall)
+lateStageSmall = apply(lateStageSmall,2,standardize)
+head(lateStageSmall)
+```
+
+# Instantiating the SpiderLearner and Adding Candidates
+
+Instantiate a SpiderLearner object with the `SpiderLearner$new()` function, and add candidates as desired:
+
+```{R}
+s = SpiderLearner$new()
+
+apple = HugeEBICCandidate$new(gamma = 0)
+banana = HugeEBICCandidate$new(gamma = 0.5)
+clementine = HugeRICCandidate$new()
+date = HGlassoCandidate$new()
+elderberry = MLECandidate$new() 
+fraise = HugeStARSCandidate$new(thres = 0.05)
+grape = HugeStARSCandidate$new(thres = 0.1)
+honeydew = QGraphEBICCandidate$new(gamma = 0)
+icewine = QGraphEBICCandidate$new(gamma = 0.5)
+
+candidates = list(apple, 
+                  banana, 
+                  clementine, 
+                  date, 
+                  elderberry,
+                  fraise,
+                  grape,
+                  honeydew,
+                  icewine)
+
+for(candidate in candidates)
+{
+  s$addCandidate(candidate)
+}
+```
+
+# Running the SpiderLearner
+
+Here is the syntax for running the model. Output is suppressed here for space. 
+
+```{R eval=FALSE}
+slResults = s$runSpiderLearner(lateStageSmall, K = 10, standardize=T, nCores = 1)
+```
+
+```{R include=FALSE}
+slResults = s$runSpiderLearner(lateStageSmall, K = 10, standardize=T, nCores = 1)
+```
+
+There are two ways to access the results. The first is in the object we've saved as `slResults` that is returned by the `runSpiderLearner` function. The results are also stored in the SpiderLearner object itself and can be accessed with the `getResults` function. Note that the results accessed with `getResults` will only be the most recent set of results; therefore, if you wish to change your library with `addCandidate` or `deleteCandidate` and then run the model again, you should save the results as a separate object each time.
+
+```{R}
+ls(slResults)
+ls(s$getResults())
+```
+
+# Investigating SpiderLearner Results
+
+A good starting point for investigating results is to look at the weights of each candidate method. 
+
+```{R}
+s$getWeights()
+```
+
+We can plot the GGM for the SpiderLearner ensemble model using the `plotSpiderLearner` function:
+
+```{R message=F}
+s$plotSpiderLearner()
+```
+
+We can also plot the GGM corresponding to any of the candidate method using the `plotCandidate` function with the method identifier as an argument - for example, here is the MLE:
+
+```{R}
+s$plotCandidate(identifier = "mle")
+```
+
+The adjacency matrix of the estimated GGM can be also accessed with `getGGM`:
+
+```{R}
+s$getGGM()[1:5,1:5]
+```
+
+The $i,j^{th}$ entry in this matrix represents the estimated partial correlation between the $i^{th}$ and $j^{th}$ variable in this dataset. ^[Note that there is a known lack of symmetry in the graphical lasso-estimated precision matrix [@rolfs2013note], and consequently, in the matrix of partial correlations estimated by SpiderLearner. In the `ensembleGGM` package, we address this by averaging the $i,j^{th}$ and $j,i^{th}$ entry of the adjacency matrix to obtain a symmetric matrix, consistent with the fact that partial correlation should be symmetric.]
+
+# Running More Ensembles
+
+It is straightforward to make changes in the library, number of folds, or dataset and run SpiderLearner again using the same object. For example, we can remove the hub graphical lasso and the MLE as candidate methods using the syntax:
+
+```{R}
+s$removeCandidate("hglasso")
+s$removeCandidate("mle")
+```
+
+We can check what's in our library now with the `printLibrary` function:
+
+```{R}
+s$printLibrary()
+```
+
+Finally, we can run our model again. Say that this time, we want to use 5 folds; we can modify that parameter here as well.
+
+```{R eval=FALSE}
+slResults_v2 = s$runSpiderLearner(lateStageSmall, K = 5, standardize=T, nCores = 1)
+```
+
+```{R include=FALSE}
+slResults_v2 = s$runSpiderLearner(lateStageSmall, K = 5, standardize=T, nCores = 1)
+```
+
+Now, when we use the `getWeights()` function, we will get the results for our latest analysis:
+
+```{R}
+s$getWeights()
+```
+
+# Contact Us / Contribute
+
+This package is new, and any and all suggestions are welcomed. You can use GitHub to raise issues, contribute, or communicate with us about the package:
+
+https://github.com/katehoffshutta/ensembleGGM
+
+In particular, we would love to add more GGM estimation methods as `Candidate` objects and we welcome contributions in that area.
+
+# References
