@@ -18,23 +18,23 @@ knitr::include_graphics("images/headshot.jpeg")
 
 I am a [postdoctoral research fellow](https://connects.catalyst.harvard.edu/Profiles/display/Person/202432) at Harvard School of Public Health and Brigham and Women's Hospital, exploring network models for multiomic data.
 
-## Key Publications
+## Key Publications and Preprints
 
-+ [DRAGON](https://arxiv.org/abs/2104.01690) is a new tool for multi-omic Gaussian graphical modeling. DRAGON lives in the [Network Zoo](https://netzoo.github.io/) and is available as part of [netZooPy](https://netzoopy.readthedocs.io/en/latest/). Citation: **Shutta, K.H.**^+^, Weighill, D.^+^, Burkholz, R., Guebila, M.B., Zacharias, H.U., Quackenbush, J. and Altenbuchinger, M., **2022**. DRAGON: determining regulatory associations using graphical models on multi-omic networks. *arXiv preprint* arXiv:2104.01690. ^+^: equal contribution
++ [DRAGON](https://arxiv.org/abs/2104.01690){target="_blank"} is a new tool for multi-omic Gaussian graphical modeling. DRAGON lives in the [Network Zoo](https://netzoo.github.io/){target="_blank"} and is available as part of [netZooPy](https://netzoopy.readthedocs.io/en/latest/){target="_blank"}. Citation: **Shutta, K.H.**^+^, Weighill, D.^+^, Burkholz, R., Guebila, M.B., Zacharias, H.U., Quackenbush, J. and Altenbuchinger, M., **2022**. DRAGON: determining regulatory associations using graphical models on multi-omic networks. *arXiv,* https://doi.org/10.48550/arXiv.2104.01690. ^+^: equal contribution
 
-+ Our recent [tutorial](https://onlinelibrary.wiley.com/doi/10.1002/sim.9546) on Gaussian graphical models is a great starting point for applied statisticians to get up and running with GGM analyses. You can find a stand-alone RMarkdown document with the tutorial code [here](https://github.com/katehoffshutta/ggmTutorial). Citation: **Shutta, K.H.**, De Vito, R., Scholtens, D.M. and Balasubramanian, R., **2022**. Gaussian graphical models with applications to omics analyses. *Statistics in medicine.*
++ Our recent [tutorial](https://onlinelibrary.wiley.com/doi/10.1002/sim.9546){target="_blank"} on Gaussian graphical models is a great starting point for applied statisticians to get up and running with GGM analyses. You can find a stand-alone RMarkdown document with the tutorial code [here](https://github.com/katehoffshutta/ggmTutorial){target="_blank"}. Citation: **Shutta, K.H.**, De Vito, R., Scholtens, D.M. and Balasubramanian, R., **2022**. Gaussian graphical models with applications to omics analyses. *Statistics in medicine.* https://doi.org/10.1002/sim.9546
 
-+ [SpiderLearner](https://doi.org/10.1101/2021.07.13.452248) is an ensemble approach we've developed for estimating Gaussian graphical models. Citation: **Shutta, K.H.**, Balzer, L.B., Scholtens, D.M. and Balasubramanian, R., **2021**. SpiderLearner: An ensemble approach to Gaussian graphical model estimation. *bioRxiv,* https://doi.org/10.1101/2021.07.13.452248.
++ [SpiderLearner](https://doi.org/10.1101/2021.07.13.452248){target="_blank"} is an ensemble approach we've developed for estimating Gaussian graphical models. Citation: **Shutta, K.H.**, Balzer, L.B., Scholtens, D.M. and Balasubramanian, R., **2021**. SpiderLearner: An ensemble approach to Gaussian graphical model estimation. *bioRxiv,* https://doi.org/10.1101/2021.07.13.452248.
 
-+ We have identified and validated [11 metabolites associated with chronic psychosocial distress](https://doi.org/10.1016/j.psyneuen.2021.105420) using data from the NHS, NHSII, and WHI. Citation: **Shutta, K.H.** ^+^, Balasubramanian, R. ^+^, Huang, T., Jha, S.C., Zeleznik, O.A., Kroenke, C.H., Tinker, L.F., Smoller, J.W., Casanova, R., Tworoger, S.S., Manson, J.E., Clish, C.B., Rexrode, K.M., Hankinson, S.E.^++^, and Kubzansky, L.D.^++^, **2021**. Plasma metabolomic profiles associated with chronic distress in women. *Psychoneuroendocrinology*, 133, p.105420. ^+^, ^++^: equal contribution
++ We have identified and validated [11 metabolites associated with chronic psychosocial distress](https://doi.org/10.1016/j.psyneuen.2021.105420){target="_blank"} using data from the NHS, NHSII, and WHI. Citation: **Shutta, K.H.** ^+^, Balasubramanian, R. ^+^, Huang, T., Jha, S.C., Zeleznik, O.A., Kroenke, C.H., Tinker, L.F., Smoller, J.W., Casanova, R., Tworoger, S.S., Manson, J.E., Clish, C.B., Rexrode, K.M., Hankinson, S.E.^++^, and Kubzansky, L.D.^++^, **2021**. Plasma metabolomic profiles associated with chronic distress in women. *Psychoneuroendocrinology*, 133, p.105420. https://doi.org/10.1016/j.psyneuen.2021.105420.^+^, ^++^: equal contribution
 
 
 ## Resources 
 
-+ [SpiderLearner Quickstart Guide](https://katehoffshutta.github.io/web/SpiderLearner/SpiderLearnerQuickStart.html)
++ [SpiderLearner Quickstart Guide](https://katehoffshutta.github.io/web/SpiderLearner/SpiderLearnerQuickStart.html){target="_blank"}
 
-+ [DIfferential Network analysis in GenOmics (DINGO) Tutorial](https://katehoffshutta.github.io/tutorials/20220311_dingoTutorial.html) 
++ [DIfferential Network analysis in GenOmics (DINGO) Tutorial](https://katehoffshutta.github.io/tutorials/20220311_dingoTutorial.html){target="_blank"}
 
 ## Contact
 
-kshutta@hsph.harvard.edu
+kshutta at hsph.harvard.edu
