@@ -28,6 +28,9 @@ I am a [postdoctoral research fellow](https://connects.catalyst.harvard.edu/Prof
 
 + We have identified and validated [11 metabolites associated with chronic psychosocial distress](https://doi.org/10.1016/j.psyneuen.2021.105420){target="_blank"} using data from the NHS, NHSII, and WHI. Citation: **Shutta, K.H.** ^+^, Balasubramanian, R. ^+^, Huang, T., Jha, S.C., Zeleznik, O.A., Kroenke, C.H., Tinker, L.F., Smoller, J.W., Casanova, R., Tworoger, S.S., Manson, J.E., Clish, C.B., Rexrode, K.M., Hankinson, S.E.^++^, and Kubzansky, L.D.^++^, **2021**. Plasma metabolomic profiles associated with chronic distress in women. *Psychoneuroendocrinology*, 133, p.105420. https://doi.org/10.1016/j.psyneuen.2021.105420.^+^, ^++^: equal contribution
 
+## Recent Presentations
+
++ [DRAGON](https://katehoffshutta.github.io/web/presentations/20220722_NetBioMed_DRAGON.pdf){target="_blank"}, presented at [NetBioMed 2022](https://sites.google.com/channing.harvard.edu/netbiomed2022){target="_blank"}, a satellite of the [NetSci 2022](https://netsci2022.net/){target="_blank"} conference 
 
 ## Resources 
 
