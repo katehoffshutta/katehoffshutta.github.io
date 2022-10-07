@@ -30,7 +30,7 @@ I am a [postdoctoral research fellow](https://connects.catalyst.harvard.edu/Prof
 
 ## Recent Presentations
 
-+ [DRAGON](https://katehoffshutta.github.io/web/presentations/20220722_NetBioMed_DRAGON.pdf){target="_blank"}, presented at [NetBioMed 2022](https://sites.google.com/channing.harvard.edu/netbiomed2022){target="_blank"}, a satellite of the [NetSci 2022](https://netsci2022.net/){target="_blank"} conference 
++ [DRAGON](https://katehoffshutta.github.io/presentations/20220722_NetBioMed_DRAGON.pdf){target="_blank"}, presented at [NetBioMed 2022](https://sites.google.com/channing.harvard.edu/netbiomed2022){target="_blank"}, a satellite of the [NetSci 2022](https://netsci2022.net/){target="_blank"} conference 
 
 ## Resources 
 
