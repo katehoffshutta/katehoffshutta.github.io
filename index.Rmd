@@ -32,9 +32,12 @@ I am a [postdoctoral research fellow](https://connects.catalyst.harvard.edu/Prof
 
 ## Recent Presentations
 
++ [A tutorial on the `icensmis` package](https://katehoffshutta.github.io/presentations/2024_CSP_Tutorial_Slides.pdf){target="_blank"}, presented at the [ASA Conference on Statistical Practice 2024](https://ww2.amstat.org/meetings/csp/2024/){target="_blank"}
 + [DRAGON](https://katehoffshutta.github.io/presentations/20220722_NetBioMed_DRAGON.pdf){target="_blank"}, presented at [NetBioMed 2022](https://sites.google.com/channing.harvard.edu/netbiomed2022){target="_blank"}, a satellite of the [NetSci 2022](https://netsci2022.net/){target="_blank"} conference 
 
 ## Resources 
+
++ [CSP 2024: Demonstration of `icensmis` for self-reported, error-prone time-to-event outcomes](https://katehoffshutta.github.io/web/icensmis/20240229_CSP_selfreports.html){target="_blank"} The un-knit RMarkdown is also available [here](https://katehoffshutta.github.io/web/icensmis/20240229_CSP_selfreports.Rmd).
 
 + [SpiderLearner Quickstart Guide](https://katehoffshutta.github.io/web/SpiderLearner/SpiderLearnerQuickStart.html){target="_blank"}
 

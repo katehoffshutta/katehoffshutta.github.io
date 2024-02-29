@@ -1,0 +1,348 @@
+---
+title: "ASA CSP 2024 Demonstration"
+author: "Kate Shutta (kshutta@hsph.harvard.edu)"
+date: '2024-02-29'
+bibliography: references.bib
+link-citations: true
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      toc_collapsed: true
+    toc_depth: 3
+    number_sections: true
+    theme: lumen
+---
+
+# Install and load necessary packages
+
+The following packages are used for the error-prone, time-to-event analysis presented here:
+
+```{R}
+library(icensmis)
+library(icRSF)
+```
+
+There are also some general packages we will need:
+
+```{R message=F}
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(MASS)
+```
+
+# Simulate error-prone time-to-event data 
+
+The `icRSF` package provides a function called `simout` for simulating error-prone time-to-event data. We will use this function to simulate data for this tutorial. To learn more about this function, run the line below in an interactive R session. 
+
+```{R}
+?icRSF::simout
+```
+
+Let's assume a simple model in which we have a study of 1000 participants, half of whom are assigned a treatment and half of whom are kept as controls. 
+
+```{R}
+set.seed(2024)
+trt_groups = matrix(rbinom(n=1000,size=1,prob = 0.5),ncol=1)
+head(trt_groups)
+```
+
+In our model, tests are conducted every two years for an 8-year period.
+
+```{R}
+test_times = c(2,4,6,8)
+```
+
+The sensitivity and specificity of the self report are set to be 0.7 and 0.95, respectively:
+
+```{R}
+sens = 0.7
+spec = 0.95
+```
+
+We assume that 60 percent of the subjects will experience the event by the end of the study. 
+
+```{R}
+noevent = 0.4
+```
+
+Let's assume our treatment is successful and set a negative coefficient for the treatment variable:
+
+```{R}
+betas = c(-0.5)
+```
+
+Finally assume that after the first positive result, no further tests are given ("No Test after First Positive" or NTFP design).
+
+```{R}
+design = "NTFP"
+```
+
+Using these variables, we simulate data with `simout`:
+
+```{R}
+icmis_data = simout(Xmat = trt_groups,
+                    testtimes = test_times,
+                    sensitivity = sens,
+                    specificity = spec,
+                    betas = betas,
+                    noevent = noevent,
+                    design = design)
+```
+
+For further analysis, we add the information about treatment groups to the simulated data using a `left_join`.
+
+```{R}
+trt_groups_df = data.frame(trt_groups)
+trt_groups_df$ID = 1:nrow(trt_groups)
+
+icmis_data_with_trt = left_join(icmis_data,trt_groups_df,by="ID")
+```
+
+# Fit the modified Cox PH model with `icmis`
+
+This section uses the models described in @gu2015semiparametric. We can run `icmis` on the simulated data; we expect to recover a coefficient of about -0.5 for our treatment group based on the specification of `beta` above.
+
+```{R}
+mod_fit <- icmis(subject = ID, 
+                 testtime = time, 
+                 result = result, 
+                 data = icmis_data_with_trt,
+                 sensitivity = sens, 
+                 specificity = spec, 
+                 formula = ~ factor(trt_groups),
+                 param = 3,
+                 control = list(maxit = 1000))
+```
+
+And compare to what we would recover if we assumed near-perfect sensitivity and specificity:
+
+```{R}
+mod_fit_perf <- icmis(subject = ID, 
+                 testtime = time, 
+                 result = result, 
+                 data = icmis_data_with_trt,
+                 sensitivity = 0.999, 
+                 specificity = 0.999, 
+                 formula = ~ factor(trt_groups),
+                 param = 3,
+                 control = list(maxit = 1000))
+```
+
+Compare the coefficients estimated with the two methods:
+
+```{R}
+kable(mod_fit$coefficient)
+kable(mod_fit_perf$coefficient)
+```
+
+Generate a forest plot of the estimated log hazard ratios and corresponding confidence intervals:
+
+```{R echo=F}
+mod_fit$coefficient$Model = "Accounting for Error"
+mod_fit_perf$coefficient$Model = "Naive"
+plot_df = rbind.data.frame(mod_fit$coefficient, mod_fit_perf$coefficient)
+forest = ggplot(data=plot_df, aes(x=Model, y=coefficient, ymin=coefficient - 1.96*SE, ymax=coefficient + 1.96*SE, color=`Model`)) + 
+  geom_pointrange(lwd=0.8, position = position_jitterdodge(jitter.width=0,dodge.width = 0.7)) +
+  geom_hline(aes(yintercept = 0), lty=2) +
+  geom_hline(aes(yintercept = -0.5), lty=2,col="darkgray") +
+  coord_flip() +
+  ylab("Hazard Ratio") + 
+  xlab("Age Group") + 
+  ggtitle("Association of Age Group with Diabetes")
+forest
+```
+
+In addition to the regression coefficients $\beta$, `icmis` estimates the survival function at each time point, $\mathbf{\theta} = \theta_1, \dots, \theta_J$:
+
+```{R}
+mod_fit$survival
+```
+
+The `plot_surv` function can be used to make a graph from this output:
+
+```{R}
+plot_surv(mod_fit)
+```
+
+We can compare this to the survival function estimated by the naive approach that assumes near-perfect sensitivity and specificity:
+
+```{R}
+mod_fit_perf$survival
+```
+
+Plotting the two together to compare:
+
+```{R}
+plot_df = data.frame("time"=mod_fit$survival$time,
+                     "icmis"=mod_fit$survival$surv,
+                     "naive"=mod_fit_perf$survival$surv)
+plot(plot_df$time,plot_df$icmis,type="s",
+     xlab = "Time", ylab = "Survival(Time)",col="blue",lwd=3, main = "Naive Method vs. icmis",ylim=c(0,1))
+lines(plot_df$time,plot_df$naive,type="s",col="red",lwd=3, lty=2)
+legend("bottomleft", c("icmis","naive"),col=c("blue","red"), lty=c(1,2),lwd=c(3,3))
+```
+
+# Design a study with `icpower`
+
+This section applies the methods described in @gu2016study. The specified incidence and hazard ratios we chose for the study design are referenced from @tsadok2012sex and @eliassen2016validity.
+
+First, we provide an estimate for the survival function at each year based on a pre-specified annual cumulative incidence (often from prior studies):
+
+```{R}
+getSurvivals = function(annualCumulativeIncidence,visitsPerYear,years)
+{
+  incidencePerVisit = annualCumulativeIncidence/visitsPerYear
+  return(1-c(1:(years*visitsPerYear))*incidencePerVisit)
+}
+
+mySurv = getSurvivals(0.016, 1, 10)
+```
+
+Next, we plug this set of survival functions into the `icpower` function.
+
+```{R}
+power80 = icpower(survivals = mySurv,
+                  HR = 1.14,
+                  sensitivity = 0.81,
+                  specificity = 0.995,
+                  power = 0.8,
+                  rho = 0.5,
+                  alpha = 0.05,
+                  pmiss = 0.02,
+                  pcensor = 0.01,
+                  design = "MCAR" )
+```
+
+The output of `icpower` gives us the total sample size and the number of individuals in each group needed to achieve the desired power:
+
+```{R}
+power80$result
+```
+
+# Perform high-dimensional variable selection with `icRSF`
+
+This section demonstrates the methods described in @xu2018modified.
+
+To begin, we will simulate a high-dimensional predictor set consisting of $P=1000$ variables measured on $N=500$ individuals.
+
+```{R}
+library(MASS)
+Xmat = MASS::mvrnorm(n=500,mu=rep(0,1000),Sigma=diag(1000))
+colnames(Xmat) = paste0("Pred",1:1000)
+Xmat[1:5,1:5]
+```
+
+Of these 1000 variables, we select the first 50 to have a true association with survival, setting the log hazard ratio equal to 1:
+
+```{R}
+beta = rep(0, 1000)
+beta[1:50]=1
+```
+
+Now we simulate error-prone data corresponding to these covariates. Let's keep the sensitivity and specificity from the stroke example as our test characteristics and test over a 10 year period.
+
+```{R}
+simdata = simout(Xmat, 
+                  testtimes=1:10, 
+                  sensitivity=0.8, 
+                  specificity=0.995, 
+                  noevent=0.9, 
+                  betas=beta, 
+                  design='NTFP')
+```
+                    
+Next, we run variable importance calculations on the simulated data. To save time, after running this chunk one time, the results are saved to a file, this chunk is set to `eval=F`, and for later analysis the results are loaded from file. 
+
+```{R eval=F}
+rsf_res = icrsf(data=simdata, 
+              subject=ID, 
+              testtimes=time, 
+              result=result, 
+              sensitivity=0.8,
+              specificity=0.995, 
+              Xmat=Xmat, 
+              root.size=10, 
+              ntree=100, 
+              ns=sqrt(ncol(Xmat)), 
+              node=8)
+
+save(rsf_res,file="rsf_res.rda")
+```
+
+Load the RSF results:
+
+```{R}
+load("rsf_res.rda")
+```
+
+We see high variable importance for the first 50 predictors, the set of predictors that we established as truly associated with survival in our simulation.
+
+```{R}
+boxplot(rsf_res[-c(1:50)],rsf_res[1:50],names = c("Other Predictors", "True Predictors"),main="RSF Variable Importance",ylab="Variable Importance Score")
+```
+
+# Perform high-dimensional variable selection with Bayesian Variable Selection
+
+First, we define a helper function to link together several pieces of the Bayesian Variable Selection (BVS) process.
+
+```{R}
+bvs_fit = function(data, # outcome
+                    Xmat, # covariates matrix
+                    sensitivity, 
+                    specificity, 
+                    b, om1, om2, # hyperparameters
+                    niter, # number of iterations
+                    psample, # probability of updating coefficient
+                    initsurv, # rate of event free at the study end
+                    nreport = 10000, # every how many iterations to output parameters
+                    nburn #  burn-in
+                    ){
+  if (niter < 10000) stop("Too small niter (at least 10000)")
+  Dm <- icensmis:::dmat(data$ID, data$time, data$result, 
+                        sensitivity, specificity, 1)
+  fit <- icensmis:::bayesmc(Dm, Xmat, b, om1, om2, niter,
+                            psample, initsurv, nreport,
+                            icensmis:::fitsurv)
+  icensmis:::gamma_mean(fit, nburn) 
+}
+```
+
+Next, we apply this function to our simulated data. As in the RSF example, this chunk is set to `eval=F` and results are loaded from file to save time in the demonstration.
+
+```{R eval=F}
+bvs_result = bvs_fit(data = simdata,
+                      Xmat = Xmat,
+                      sensitivity = 0.8, 
+                      specificity = 0.995,
+                      b = 1, 
+                      om1 = 5, 
+                      om2 = 100, 
+                      niter = 50000, 
+                      psample = 0.3, 
+                      initsurv = 0.9,
+                      nreport = 1000, 
+                      nburn = 10000)
+save(bvs_result,file="bvs_result.rda")
+```
+
+Load in the BVS result and see what the estimated values of the true predictors are.
+
+```{R}
+load("bvs_result.rda")
+df = data.frame(Metabolites = colnames(Xmat), 
+                 Score = bvs_result, 
+                 Rank = rank(-bvs_result),
+                 TruePredictor = ifelse(1:ncol(Xmat) %in% 1:50,1,0))
+head(df)
+```
+
+We can see that the variables we simulated to have a true association with the time-to-event have a higher variable importance score than the other predictors. 
+
+```{R}
+boxplot(df$Score ~ df$TruePredictor, names = c("Other Predictors","True Predictors"), ylab = "Variable Importance Score",xlab="",main="Bayesian Variable Selection")
+```
+
+# References
+
