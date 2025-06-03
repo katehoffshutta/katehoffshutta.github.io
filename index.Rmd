@@ -16,7 +16,8 @@ knitr::include_graphics("images/headshot.jpeg")
 
 ## About me
 
-I am a [postdoctoral research fellow](https://connects.catalyst.harvard.edu/Profiles/display/Person/202432) at Harvard School of Public Health, exploring network models for multiomic data. Please feel free to email me if you would like to learn about my research! I'd love to talk more and build collaborations.
+I am a [postdoctoral research fellow](https://connects.catalyst.harvard.edu/Profiles/display/Person/202432) at Harvard School of Public Health, exploring network models for multiomic data. Please feel free to email me (kshutta@hsph.harvard.edu) if you would like to learn about my research! I'd love to talk more and build collaborations. 
+
 
 ## Research news 
 
@@ -68,7 +69,7 @@ Check out our preprint on [graphical modeling of multi-study data](https://arxiv
 
 ## Resources 
 
-+ [NetworkDataCompanion Quickstart](https://htmlpreview.github.io/?https://github.com/QuackenbushLab/NetworkDataCompanion/blob/main/quickstart.html){target="_blank} Demonstration of TCGA data wrangling tools, focused on handling methylation and gene expression data from the [Genomic Data Commons](https://gdc.cancer.gov){target="_blank"}. 
++ [NetworkDataCompanion Quickstart](https://htmlpreview.github.io/?https://github.com/QuackenbushLab/NetworkDataCompanion/blob/main/quickstart.html){target="_blank"} Demonstration of TCGA data wrangling tools, focused on handling methylation and gene expression data from the [Genomic Data Commons](https://gdc.cancer.gov){target="_blank"}. 
 
 + [CSP 2024: Demonstration of `icensmis` for self-reported, error-prone time-to-event outcomes](https://katehoffshutta.github.io/web/icensmis/20240229_CSP_selfreports.html){target="_blank"} The un-knit RMarkdown is also available [here](https://katehoffshutta.github.io/web/icensmis/20240229_CSP_selfreports.Rmd).
 
@@ -76,8 +77,6 @@ Check out our preprint on [graphical modeling of multi-study data](https://arxiv
 
 + [DIfferential Network analysis in GenOmics (DINGO) Tutorial](https://katehoffshutta.github.io/tutorials/20220311_dingoTutorial.html){target="_blank"}
 
-## Contact
-
-kshutta at hsph.harvard.edu
+## CV
 
 Please email me if you would like my CV. 
