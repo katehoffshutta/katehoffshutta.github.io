@@ -1,8 +1,10 @@
 ---
 title: "Kate Hoff Shutta"
 output:
-    rmdformats::robobook:
-    toc_depth: 3
+    rmdformats::downcute:
+      toc_float:
+        collapsed: false
+      toc_depth: 4
 ---
 ```{R echo=F}
 library(knitr)
@@ -11,44 +13,41 @@ library(rmdformats)
 
 
 ```{R echo=F, out.width="200px"}
-knitr::include_graphics("images/headshot.jpeg")
+knitr::include_graphics("images/shutta_headshot.jpg")
 ```
 
-## About me
+## **About me**
 
-I am a [postdoctoral research fellow](https://connects.catalyst.harvard.edu/Profiles/display/Person/202432) at Harvard School of Public Health, exploring network models for multiomic data. Please feel free to email me (kshutta@hsph.harvard.edu) if you would like to learn about my research! I'd love to talk more and build collaborations. 
+I am a [Research Associate](https://connects.catalyst.harvard.edu/Profiles/display/Person/202432) at Harvard School of Public Health, exploring network models for multiomic data. Please feel free to email me (kshutta@hsph.harvard.edu) if you would like to learn about my research! I'd love to talk more and build collaborations. 
 
 
-## Research news 
+## **Research news**
 
 You can see my full research profile on [Google Scholar](https://scholar.google.com/citations?user=oWNjRSMAAAAJ&hl=en){target="_blank"}. Here are a few exciting recent updates:
 
-### tcga-data-nf and NetworkDataCompanion
+### Fall 2025: NHLBI K25 Mentored Quantitative Research Career Development Award received
 
-The Quackenbush lab has published a [Nextflow workflow for reproducible processing and analysis of gene regulatory networks](https://github.com/QuackenbushLab/tcga-data-nf) in TCGA! Check out the results in our [preprint](https://pubmed.ncbi.nlm.nih.gov/39574772/), where we use DRAGON and PANDA networks to investigate consensus molecular subtypes of colon cancer, identifying key epigenetic features related to subtype-specific regulatory differences. 
+I'm thrilled to expand my research in network models of lung disease thanks to my recently funded K25 award from the National Heart, Lung, and Blood Institute of the NIH: [Multi-omic network methods for mapping molecular trajectories of age-related lung diseases](https://reporter.nih.gov/project-details/11136668){target="_blank"}. 
+
+### 20 October 2025: tcga-data-nf and NetworkDataCompanion are published in GigaScience!
+
+The Quackenbush lab has published a [Nextflow workflow for reproducible processing and analysis of gene regulatory networks](https://github.com/QuackenbushLab/tcga-data-nf) in TCGA. Check out the results in our [Gigascience paper](https://doi.org/10.1093/gigascience/giaf126){target="_blank"}, where we use DRAGON and PANDA networks to investigate consensus molecular subtypes of colon cancer, identifying key epigenetic features related to subtype-specific regulatory differences. 
 
 I'm very grateful to have had the opportunity to work on this project, which is led by my talented colleague [Viola Fanfani](https://violafanfani.github.io/){target="_blank"}. I'm the lead developer and maintainer of the associated R package [`NetworkDataCompanion`](https://github.com/QuackenbushLab/NetworkDataCompanion){target="_blank"}, which can be used with the Nextflow workflow or as a standalone tool to assist with analysis of TCGA data. We hope this tool will be useful for many and we welcome contributions from the community!
 
-Citation: Fanfani, V., **Shutta, K.H.**, Mandros, P., Fischer, J., Saha, E., Micheletti, S., Chen, C., Guebila, M.B., Lopes-Ramos, C.M. and Quackenbush, J., **2024**. Reproducible processing of TCGA regulatory networks. bioRxiv. https://doi.org/10.1101/2024.11.05.622163 
+Citation: Fanfani, V., **Shutta, K.H.**, Mandros, P., Fischer, J., Saha, E., Micheletti, S., Chen, C., Guebila, M.B., Lopes-Ramos, C.M. and Quackenbush, J., **2025**. Reproducible processing of TCGA regulatory networks. GigaScience, giaf126, https://doi.org/10.1093/gigascience/giaf126
+
+## **Key research contributions**
 
 ### DRAGON for multi-omic GGMs
 
-[DRAGON](https://arxiv.org/abs/2104.01690){target="_blank"}, our tool for multi-omic Gaussian graphical modeling, has been published in Nucleic Acids Research! DRAGON lives in the [Network Zoo](https://netzoo.github.io/){target="_blank"} and is available as part of [netZooPy](https://netzoopy.readthedocs.io/en/latest/){target="_blank"} and [netZooR](https://github.com/netZoo/netZooR){target="_blank"}. 
+[DRAGON](https://doi.org/10.1093/nar/gkac1157){target="_blank"} is our tool for multi-omic Gaussian graphical modeling. DRAGON lives in the [Network Zoo](https://netzoo.github.io/){target="_blank"} and is available as part of [netZooPy](https://netzoopy.readthedocs.io/en/latest/){target="_blank"} and [netZooR](https://github.com/netZoo/netZooR){target="_blank"}. 
 
 Citation: **Shutta, K.H.**^+^, Weighill, D.^+^, Burkholz, R., Guebila, M.B., Zacharias, H.U., Quackenbush, J. and Altenbuchinger, M., **2023**. DRAGON: determining regulatory associations using graphical models on multi-omic networks.  Nucleic Acids Research, 51(3), e15-e15. https://doi.org/10.1093/nar/gkac1157 ^+^: equal contribution
 
-### Metabolomics of mental health and cardiometabolic health
-
-I'm proud to have contributed to several publications that use metabolomics to understand the relationship between mental health and cardiometabolic health! This work was supported by the NIH NIA (award number [R01-AG051600](https://reporter.nih.gov/search/6QSl7r5uPU6hV3i_mMNLCw/projects?shared=true){target="_blank"}). Some of my primary contributions are cited below.
-
-+ [Metabolites associated with chronic psychosocial distress](https://doi.org/10.1016/j.psyneuen.2021.105420){target="_blank"} **Shutta, K.H.** ^+^, Balasubramanian, R. ^+^, Huang, T., Jha, S.C., Zeleznik, O.A., Kroenke, C.H., Tinker, L.F., Smoller, J.W., Casanova, R., Tworoger, S.S., Manson, J.E., Clish, C.B., Rexrode, K.M., Hankinson, S.E.^++^, and Kubzansky, L.D.^++^, **2021**. Plasma metabolomic profiles associated with chronic distress in women. *Psychoneuroendocrinology*, 133, p.105420. https://doi.org/10.1016/j.psyneuen.2021.105420.^+^, ^++^: equal contribution
-+ [*Mental health and incident cardiovascular disease*](https://doi.org/10.1016/j.bbi.2023.08.010){target="_blank"} Balasubramanian, R., **Shutta, K. H.**, Guasch-Ferre, M., Huang, T., Jha, S. C., Zhu, Y., ... Hankinson, S.E., & Kubzansky, L. D. (**2023**). Metabolomic profiles of chronic distress are associated with cardiovascular disease risk and inflammation-related risk factors. Brain, Behavior, and Immunity, 114, 262-274. https://doi.org/10.1016/j.bbi.2023.08.010
-+ [*Mental health and diabetes risk*](https://doi.org/10.1210/clinem/dgad731){target="_blank"} Huang, T., Zhu, Y., **Shutta, K. H.**, Balasubramanian, R., Zeleznik, O. A., Rexrode, K. M., ... Kubzansky, L.D., & Hankinson, S. E. (**2023**). A Plasma Metabolite Score Related to Psychological Distress and Diabetes Risk: A Nested Case-control Study in US Women. The Journal of Clinical Endocrinology & Metabolism, dgad731. https://doi.org/10.1210/clinem/dgad731
-
-  
 ### SpiderLearner
 
-SpiderLearner, our ensemble method for estimating Gaussian graphical models, has been published in Statistics in Medicine! 
+SpiderLearner is our ensemble method for estimating Gaussian graphical models. 
 Our [SpiderLearner Quickstart Guide](https://katehoffshutta.github.io/web/SpiderLearner/SpiderLearnerQuickStart.html){target="_blank"} will get you up and running with the corresponding R package `ensembleGGM` in just a few minutes. We are always looking for feedback via the [`ensembleGGM` Github repository](https://github.com/katehoffshutta/ensembleGGM){target="_blank"}! Citation: **Shutta, K. H.**, Balzer, L. B., Scholtens, D. M., & Balasubramanian, R. (**2023**). SpiderLearner: An ensemble approach to Gaussian graphical model estimation. Statistics in Medicine, 42(13), 2116-2133. https://doi.org/10.1002/sim.9714
 
 ### Learning about GGMs
@@ -62,12 +61,20 @@ Check out our preprint on [graphical modeling of multi-study data](https://arxiv
 
 
 
-## Presentations
+### Metabolomics of mental health and cardiometabolic health
+
+I'm proud to have contributed to several publications that use metabolomics to understand the relationship between mental health and cardiometabolic health! This work was supported by the NIH NIA (award number [R01-AG051600](https://reporter.nih.gov/search/6QSl7r5uPU6hV3i_mMNLCw/projects?shared=true){target="_blank"}). Some of my primary contributions are cited below.
+
++ [Metabolites associated with chronic psychosocial distress](https://doi.org/10.1016/j.psyneuen.2021.105420){target="_blank"} **Shutta, K.H.** ^+^, Balasubramanian, R. ^+^, Huang, T., Jha, S.C., Zeleznik, O.A., Kroenke, C.H., Tinker, L.F., Smoller, J.W., Casanova, R., Tworoger, S.S., Manson, J.E., Clish, C.B., Rexrode, K.M., Hankinson, S.E.^++^, and Kubzansky, L.D.^++^, **2021**. Plasma metabolomic profiles associated with chronic distress in women. *Psychoneuroendocrinology*, 133, p.105420. https://doi.org/10.1016/j.psyneuen.2021.105420.^+^, ^++^: equal contribution
++ [*Mental health and incident cardiovascular disease*](https://doi.org/10.1016/j.bbi.2023.08.010){target="_blank"} Balasubramanian, R., **Shutta, K. H.**, Guasch-Ferre, M., Huang, T., Jha, S. C., Zhu, Y., ... Hankinson, S.E., & Kubzansky, L. D. (**2023**). Metabolomic profiles of chronic distress are associated with cardiovascular disease risk and inflammation-related risk factors. Brain, Behavior, and Immunity, 114, 262-274. https://doi.org/10.1016/j.bbi.2023.08.010
++ [*Mental health and diabetes risk*](https://doi.org/10.1210/clinem/dgad731){target="_blank"} Huang, T., Zhu, Y., **Shutta, K. H.**, Balasubramanian, R., Zeleznik, O. A., Rexrode, K. M., ... Kubzansky, L.D., & Hankinson, S. E. (**2023**). A Plasma Metabolite Score Related to Psychological Distress and Diabetes Risk: A Nested Case-control Study in US Women. The Journal of Clinical Endocrinology & Metabolism, dgad731. https://doi.org/10.1210/clinem/dgad731
+
+## **Presentations**
 
 + [A tutorial on the `icensmis` package](https://katehoffshutta.github.io/presentations/2024_CSP_Tutorial_Slides.pdf){target="_blank"}, presented at the [ASA Conference on Statistical Practice 2024](https://ww2.amstat.org/meetings/csp/2024/){target="_blank"}
 + [DRAGON](https://katehoffshutta.github.io/presentations/20220722_NetBioMed_DRAGON.pdf){target="_blank"}, presented at [NetBioMed 2022](https://sites.google.com/channing.harvard.edu/netbiomed2022){target="_blank"}, a satellite of the [NetSci 2022](https://netsci2022.net/){target="_blank"} conference 
 
-## Resources 
+## **Resources**
 
 + [NetworkDataCompanion Quickstart](https://htmlpreview.github.io/?https://github.com/QuackenbushLab/NetworkDataCompanion/blob/main/quickstart.html){target="_blank"} Demonstration of TCGA data wrangling tools, focused on handling methylation and gene expression data from the [Genomic Data Commons](https://gdc.cancer.gov){target="_blank"}. 
 
@@ -77,6 +84,6 @@ Check out our preprint on [graphical modeling of multi-study data](https://arxiv
 
 + [DIfferential Network analysis in GenOmics (DINGO) Tutorial](https://katehoffshutta.github.io/tutorials/20220311_dingoTutorial.html){target="_blank"}
 
-## CV
+## **CV**
 
 Please email me if you would like my CV. 
