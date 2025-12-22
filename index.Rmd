@@ -25,6 +25,13 @@ I am a [Research Associate](https://connects.catalyst.harvard.edu/Profiles/displ
 
 You can see my full research profile on [Google Scholar](https://scholar.google.com/citations?user=oWNjRSMAAAAJ&hl=en){target="_blank"}. Here are a few exciting recent updates:
 
+### 21 December 2025: COPD/IPF EWAS preprint up
+
+Network science meets the epigenome as we unravel COPD/IPF differential etiology in our new preprint: [Switch-like methylation of functional pathways distinguishes COPD and idiopathic pulmonary fibrosis](https://doi.org/10.64898/2025.12.18.25342312).
+
+Citation: **Shutta, K.H.**, Huang, Y., Carey, V.J., Yun, J.H., Hobbs, B., Elias, J.A., Lee, C.G., Brown, K.K., Criner, G., Flaherty, K., Limper, A., Sciurba, F., Wise, R.A., Martinez, F.J., Silverman, E.K., Quackenbush, J., and DeMeo, D.L., **2025**. Switch-like methylation of functional pathways distinguishes COPD and idiopathic pulmonary fibrosis. medRxiv, pp.2025-12. https://doi.org/10.64898/2025.12.18.25342312
+
+
 ### Fall 2025: NHLBI K25 Mentored Quantitative Research Career Development Award received
 
 I'm thrilled to expand my research in network models of lung disease thanks to my recently funded K25 award from the National Heart, Lung, and Blood Institute of the NIH: [Multi-omic network methods for mapping molecular trajectories of age-related lung diseases](https://reporter.nih.gov/project-details/11136668){target="_blank"}. 
