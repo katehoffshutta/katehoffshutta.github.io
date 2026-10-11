@@ -5,27 +5,36 @@ output:
       toc_float:
         collapsed: false
       toc_depth: 4
+      after_body: footer.html
+      
 ---
-```{R echo=F}
+```{R echo=F, message=F, warning=F}
 library(knitr)
 library(rmdformats)
 ```
 
 
-```{R echo=F, out.width="200px"}
+```{R echo=F, out.width="200px", fig.cap="",fig.alt="A photo of a woman with blond hair and green eyes, smiling professionally."}
+
 knitr::include_graphics("images/shutta_headshot.jpg")
 ```
 
 ## **About me**
 
-I am a [Research Associate](https://connects.catalyst.harvard.edu/Profiles/display/Person/202432) at Harvard School of Public Health, exploring network models for multiomic data. Please feel free to email me (kshutta@hsph.harvard.edu) if you would like to learn about my research! I'd love to talk more and build collaborations. 
+I am an [Assistant Professor](https://www.medschool.umaryland.edu/profiles/shutta-katherine/){target="_blank"} in the [Institute for Genome Sciences](https://www.medschool.umaryland.edu/igs/){target="_blank"} and the [Division of Pulmonary, Critical Care, and Sleep Medicine](https://www.medschool.umaryland.edu/medicine/divisions/division-of-pulmonary-critical-care--sleep-medicine/){target="_blank"} at the [University of Maryland School of Medicine](https://www.medschool.umaryland.edu/){target="_blank"}. My research explores network models for multiomic data. Please email me (kshutta@som.umaryland.edu) if you would like to learn about my research! I'd love to talk more and build collaborations. 
 
 
 ## **Research news**
 
-You can see my full research profile on [Google Scholar](https://scholar.google.com/citations?user=oWNjRSMAAAAJ&hl=en){target="_blank"}. Here are a few exciting recent updates:
+You can see my full research profile on [Google Scholar](https://scholar.google.com/citations?user=oWNjRSMAAAAJ&hl=en){target="_blank"}. Recent updates:
 
-### 21 December 2025: COPD/IPF EWAS preprint up
+### 20260628: Contradictory results on "Waves of Aging"
+
+A journal club started a journey that eventually brought us to investigate the posited phenomenon of waves of molecular aging. We discovered that all is not as it seems: [LOESS and DE-SWAN can induce artifactual "waves" of molecular aging](https://www.biorxiv.org/content/10.64898/2026.06.24.734079v1). I am beyond fortunate to have had the opportunity to work with the brilliant [Maddy Carbonneau](https://www.linkedin.com/in/madeleine-carbonneau){target="_blank"} on this investigation.
+
+Citation: Carbonneau, M.$^*$, **Shutta, K.H.**$^*$, Miller, J.W., Snyder, M.P., Shen, X. and Quackenbush, J., **2026**. LOESS and DE-SWAN can induce artifactual “waves” of molecular aging. bioRxiv, pp.2026-06. ($^*$co-first authors)
+
+### 20251221: COPD/IPF EWAS preprint up
 
 Network science meets the epigenome as we unravel COPD/IPF differential etiology in our new preprint: [Switch-like methylation of functional pathways distinguishes COPD and idiopathic pulmonary fibrosis](https://doi.org/10.64898/2025.12.18.25342312){target="_blank"}.
 
@@ -90,6 +99,8 @@ I'm proud to have contributed to several publications that use metabolomics to u
 
 + [DIfferential Network analysis in GenOmics (DINGO) Tutorial](https://katehoffshutta.github.io/tutorials/20220311_dingoTutorial.html){target="_blank"}
 
-## **CV**
+## **Notes**
 
-Please email me if you would like my CV. 
++ Please email me if you would like my CV. 
++ Please note words are this website are my own.
+
